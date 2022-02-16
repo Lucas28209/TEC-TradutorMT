@@ -1,6 +1,6 @@
 import csv
 
-#Função para achar o início
+#Função para encontrar o estado de início correto 
 def percorre():
   i=0
   aux=0
@@ -86,12 +86,12 @@ def turing(a,j,aux):
            sequencia.append(salvar[-1])
            if turing(salvar[-1][0],len(lista)-z,aux):
              return True
-       aux = j     
-       aux=j
-       a = indice(vai[a],aux)
-       sequencia.append([estados[a], lido[a], escrito[a], direcao[a], vai[a]])
-       if turing(a, j,aux):
-         return True                
+       aux = j+1     
+      aux=j
+      a = indice(vai[a],aux)
+      sequencia.append([estados[a], lido[a], escrito[a], direcao[a], vai[a]])
+      if turing(a, j,aux):
+        return True                
    else:     
      return False  
  return True
@@ -126,22 +126,22 @@ if __name__=="__main__":
      estados[y] = 'inic'
    if vai[y] == '0':
      vai[y] = 'inic'
-
+ 
  #Insere o input da fita,  criando uma fita "infinita" com a variável tam   
  tam = 14
  lista = ['_' for i in range (tam)]
  lista.insert(tam//2,'1')
  lista.insert(1+tam//2,'0')
- #lista.insert(2+tam//2,'0')
- #lista.insert(3+tam//2,'1')
+ #lista.insert(2+tam//2,'1')
+ #lista.insert(3+tam//2,'0')
  
  #Recebe os indices do estado inicial que fara a leitura da primeira célula da fita
  x,i,aux = percorre()
  print("Accept" if turing(x,i,aux) else "Reject")
 
- #A lista 'salvar' guarda as configurações que tentaram passar pelo marcador de centro da fita  
+ #A lista 'salvar' guarda as configurações que tentaram passar pelo marcador de início da fita
  #print(salvar) 
- #print("\nSequencia: ", sequencia)
+ 
 
 
 
@@ -150,10 +150,10 @@ if __name__=="__main__":
  
  #Insere estados de subrotinas de troca de símbolos, espaço à direita, retorno de fita 
  est = ['0', '0', 'um', 'um', 'um', 'zero', 'zero', 'zero', 'volta', 'volta', 'volta','volta', 'esp', 'esp']
- lid = ['1','0','1','0','_','1','0','_','1','0','_','S','1','0']
- esc = ['S','S','1','1','1','0','0','0','1','0','_','S','_','_']
- dir = ['r','r','r','r','l','r','r','l','l','l','r','r','r','r']
- go =  ['um', 'zero','um','zero','volta','um','zero','volta','volta','volta','inic','esp','um','zero']
+ lid = ['1', '0', '1','0','_','1','0','_','1','0','_','S','1','0']
+ esc = ['S', 'S', '1','1','1','0','0','0','1','0','_','S','_','_']
+ dir = ['r', 'r', 'r','r','l','r','r','l','l','l','r','r','r','r']
+ go =  ['um','zero','um','zero','volta','um','zero','volta','volta','volta','inic','esp','um','zero']
  simbolos = ['%','&','@','!','+','/']
 
 
@@ -193,11 +193,11 @@ if __name__=="__main__":
    direcao.append(dir[i])
    vai.append(go[i])
 
-
+#Insere os estados para a MT com fita semi-infinita
 for i in range(len(estados)):
   configuracao_final.append([estados[i], lido[i], escrito[i], direcao[i], vai[i]]) 
 
-
+#Cria o aquivo .out
 with open('traduzida.out', 'w') as txt:
     for item in configuracao_final:
         txt.write("%s %s %s %s %s \n" % (item[0],item[1],item[2],item[3],item[4]))   
