@@ -7,6 +7,6 @@ Instruções de uso:
   - Deve-se inserir o nome do arquivo/diretório diretamente no código-fonte, bem como o input da fita. 
   - Após a execução do programa, obter-se-á o arquivo 'traduzida.out', o qual conterá a configuração para a MT com fita semi-infinita.
   - Após, acesse http://morphett.info/turing/turing.html. 
-  - Insira as configurações contidas no arquivo .out em seu devido lugar, acesse 'advanced option', e mude a opção 'Machine Variant' de 'standard' para 'semi-infinite-tape'.
-  - Insira o input da fita em 'initial inpput'. 
+  - Insira as configurações contidas no arquivo .out em seu devido lugar, acesse 'advanced option', e mude a opção 'Machine Variant' de 'standard' para 'semi-infinite tape'.
+  - Insira o input da fita em 'initial input'. 
   - Clique em 'Reset', e em seguida, 'Run'.  	
